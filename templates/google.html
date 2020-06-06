@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<title>Hello, world!</title>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<a class="navbar-brand">Black Lives Matter</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" href=" {{url_for('hello_world')}}">Home<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href=" {{url_for('google')}}">Google</a>
+    <a class="nav-item nav-link" href="#">Instagram</a>
+    <a class="nav-item nav-link" href="#">Facebook</a>
+  </div>
+</div>
+</nav>
+
+
+    <br>
+    <br>
+    <div class="container">
+
+    <div class="alert alert-primary">
+      <h1>News Near You</h1>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Publisher</th>
+          <th>Snippet</th>
+        </tr>
+      </thead>
+      <tbody id = "datatable">
+
+    </tbody>
+    </table>
+
+  </div>
+  <script type="text/javascript">
+    var URL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyBLbpVqEiNj7GVc9j4erenBoOrrdDQO3Iw&cx=014103752720363215157:yx4x1ox6-y8&q=" + "{{search}}"
+      $.getJSON(URL, function(data) {
+        console.log(data)
+        for (i = 0; i < data.items.length; i++) {
+          var t1 = document.createElement("td")
+          var t2 = document.createElement("td")
+          var t3 = document.createElement("td")
+          var id = "tablerow" + i
+          var tabrow = document.createElement("tr")
+          tabrow.setAttribute('id', id)
+          t1.innerHTML =  data.items[i].title
+          t2.innerHTML = data.items[i].displayLink
+          t3.innerHTML = data.items[i].snippet
+          document.getElementById("datatable").appendChild(tabrow)
+          document.getElementById(id).appendChild(t1)
+          document.getElementById(id).appendChild(t2)
+          document.getElementById(id).appendChild(t3)
+       }
+      });
+  </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </body>
+</html>

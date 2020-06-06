@@ -8,6 +8,23 @@
     </head>
 
     <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand">Black Lives Matter</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="{{url_for('google')}}">Google</a>
+      <a class="nav-item nav-link" href="#">Instagram</a>
+      <a class="nav-item nav-link" href="#">Facebook</a>
+    </div>
+  </div>
+</nav>
+
+<br>
+<br>
         <div class="container">
             <h1>Contact your governor!</h1>
             {{ governor['First Name'] }} {{ governor['Last Name'] }}'s mailing address: {{ governor['Mailing Address Line 1'] }} {{ governor['Mailing Address Line 2'] }}, {{ governor['City'] }}, {{ governor['Code'] }} {{ governor['Zip Code'] }}
