@@ -24,7 +24,6 @@
       <a class="nav-item nav-link" href=" {{url_for('hello_world')}}">Home<span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href=" {{url_for('google')}}">Google</a>
     <a class="nav-item nav-link" href="{{url_for('instagram')}}">Instagram</a>
-    <a class="nav-item nav-link" href="#">Twitter</a>
   </div>
 </div>
 </nav>
@@ -63,13 +62,14 @@
           var id = "tablerow" + i
           var tabrow = document.createElement("tr")
           tabrow.setAttribute('id', id)
-          t1.innerHTML =  data.items[i].title
+          t1.innerHTML = "<a href=" + data.items[i].link + ">" + data.items[i].title + "</a>"
           t2.innerHTML = data.items[i].displayLink
           t3.innerHTML = data.items[i].snippet
           document.getElementById("datatable").appendChild(tabrow)
           document.getElementById(id).appendChild(t1)
           document.getElementById(id).appendChild(t2)
           document.getElementById(id).appendChild(t3)
+
        }
       });
   </script>
