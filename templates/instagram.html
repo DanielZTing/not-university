@@ -10,6 +10,14 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <title>Hello, world!</title>
+
+<style>
+    .img-fluid {
+      display: block;
+     margin-left: auto;
+     margin-right: auto;
+    }
+</style>
   </head>
 
   <body>
@@ -29,50 +37,38 @@
 </div>
 </nav>
 
+<div class = 'container'>
+  <br>
 
-    <br>
-    <br>
-    <div class="container">
-
-    <div class="alert alert-primary">
-      <h1>News Near You</h1>
-    </div>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Publisher</th>
-          <th>Snippet</th>
-        </tr>
-      </thead>
-      <tbody id = "datatable">
-
-    </tbody>
-    </table>
-
+  <h1>#blacklivesmatter</h1>
   </div>
-  <script type="text/javascript">
-    var URL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyBLbpVqEiNj7GVc9j4erenBoOrrdDQO3Iw&cx=014103752720363215157:yx4x1ox6-y8&q=" + "{{search}}"
-      $.getJSON(URL, function(data) {
-        console.log(data)
-        for (i = 0; i < data.items.length; i++) {
-          var t1 = document.createElement("td")
-          var t2 = document.createElement("td")
-          var t3 = document.createElement("td")
-          var id = "tablerow" + i
-          var tabrow = document.createElement("tr")
-          tabrow.setAttribute('id', id)
-          t1.innerHTML =  data.items[i].title
-          t2.innerHTML = data.items[i].displayLink
-          t3.innerHTML = data.items[i].snippet
-          document.getElementById("datatable").appendChild(tabrow)
-          document.getElementById(id).appendChild(t1)
-          document.getElementById(id).appendChild(t2)
-          document.getElementById(id).appendChild(t3)
-       }
-      });
-  </script>
+  <br>
+
+<div id='picsblm' class='gallery'>
+</div>
+
+<script type="text/javascript">
+    var URL = "https://www.instagram.com/explore/tags/blacklivesmatter/?__a=1"
+    $.getJSON(URL, function(data) {
+      console.log(data)
+      for (i = 0; i < 10; i++) {
+        var link = document.createElement("img")
+        var underlink = document.createElement('div')
+        id = 'picsblm'+i
+        underlink.setAttribute('id',id)
+        underlink.setAttribute('class', 'mb-3')
+        link.setAttribute('class', 'img-fluid')
+        link.setAttribute('src', data.graphql.hashtag.edge_hashtag_to_top_posts.edges[i].node.display_url)
+        link.setAttribute('width', '500')
+        link.setAttribute('height', '600')
+        document.getElementById('picsblm').appendChild(underlink)
+        document.getElementById(id).appendChild(link)
+      }
+    });
+
+
+</script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

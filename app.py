@@ -20,3 +20,7 @@ def hello_world():
 @app.route('/google')
 def google():
     return render_template('google.html', search=search);
+
+@app.route('/instagram')
+def instagram():
+    return render_template('instagram.html')
